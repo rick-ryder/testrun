@@ -1,34 +1,13 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Secret Website</title>
-</head>
-<body>
-  <h1>Welcome</h1>
-  <p>Enter your passcode to continue.</p>
+function unlock() {
+  const code = document.getElementById("passcode").value;
 
-  <input id="passcode" type="password"
-         placeholder="Enter passcode">
-  <button onclick="unlock()">Enter</button>
-
-  <p id="message"></p>
-
-  <script>
-    function unlock() {
-      const code = document.getElementById("passcode").value;
-
-      if (code === "BLUE123") {
-        window.location.href = "page-a.html";
-      } else if (code === "PINK456") {
-        window.location.href = "page-b.html";
-      } else {
-        document.getElementById("message").textContent =
-          "Incorrect passcode. Try again.";
-      }
-    }
-  </script>
-</body>
-</html>
+  if (code === "BLUE123") {
+    window.location.href = "document-a.pdf";
+  } else if (code === "PINK456") {
+    window.location.href = "document-b.pdf";
+  } else {
+    document.getElementById("message").textContent =
+      "Incorrect passcode. Try again.";
+  }
+}

@@ -1,23 +1,80 @@
-<!-- HTML: the passcode box and button -->
-<input id="passcode" type="password">
-<button onclick="unlock()">Enter</button>
 
-<!-- JavaScript: what happens when clicked -->
-<script>
-  function unlock() {
-    // Check passcode and open the matching PDF
-  }
-</
-function unlock() {
-  const code = document.getElementById("passcode").value;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Secret Website</title>
 
-  if (code === "BLUE123") {
-    window.location.href = "document-a.pdf";
-  } else if (code === "PINK456") {
-    window.location.href = "document-b.pdf";
-  } else {
-    document.getElementById("message").textContent =
-      "Incorrect passcode. Try again.";
-  }
-}
->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #171923;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    input, button {
+      padding: 12px;
+      margin: 8px;
+      border: none;
+      border-radius: 8px;
+    }
+
+    button {
+      background: #d8b4fe;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #message {
+      color: #ff9999;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Welcome</h1>
+  <p>Enter your passcode to continue.</p>
+
+  <input
+    id="passcode"
+    type="password"
+    placeholder="Enter passcode"
+  >
+
+  <button onclick="unlock()">Enter</button>
+
+  <p id="message"></p>
+
+  <script>
+    function unlock() {
+      const code = document
+        .getElementById("passcode")
+        .value.trim();
+
+      const destinations = {
+        "BLUE123": "document-a.pdf",
+        "PINK456": "document-b.pdf"
+      };
+
+      if (destinations[code]) {
+        window.location.href = destinations[code];
+      } else {
+        document.getElementById("message").textContent =
+          "Incorrect passcode. Please try again.";
+      }
+    }
+
+    document.getElementById("passcode").addEventListener(
+      "keydown",
+      function(event) {
+        if (event.key === "Enter") {
+          unlock();
+        }
+      }
+    );
+  </script>
+</body>
+</html>
